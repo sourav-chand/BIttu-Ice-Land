@@ -22,6 +22,16 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const scrollTo = (id: string) => {
+    setOpen(false);
+    const el = document.getElementById(id);
+    if (el) {
+      setTimeout(() => {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 200);
+    }
+  };
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
@@ -29,30 +39,30 @@ export default function Navbar() {
       }`}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
-        <a href="#home" className="flex items-center gap-2 text-xl sm:text-2xl" style={{ fontFamily: "Pacifico, cursive", color: scrolled ? "#FFF8F0" : "#FFF8F0" }}>
+        <button onClick={() => scrollTo("home")} className="flex items-center gap-2 text-xl sm:text-2xl" style={{ fontFamily: "Pacifico, cursive", color: scrolled ? "#FFF8F0" : "#FFF8F0" }}>
           <IceCream className="h-6 w-6 text-secondary" />
           <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
             Bittu Ice Land
           </span>
-        </a>
+        </button>
 
         <div className="hidden items-center gap-8 md:flex">
           {links.map((link) => (
-            <a
+            <button
               key={link.href}
-              href={link.href}
+              onClick={() => scrollTo(link.href.slice(1))}
               className="text-sm font-medium transition-colors hover:text-primary"
               style={{ color: scrolled ? "#FFD93D" : "#FFF8F0" }}
             >
               {link.label}
-            </a>
+            </button>
           ))}
-          <a
-            href="#contact"
+          <button
+            onClick={() => scrollTo("contact")}
             className="rounded-full bg-gradient-to-r from-primary to-secondary px-6 py-2.5 text-sm font-bold text-white shadow-lg shadow-primary/30 transition-all hover:shadow-xl hover:shadow-primary/40"
           >
             Order Now
-          </a>
+          </button>
         </div>
 
         <button
@@ -79,22 +89,20 @@ export default function Navbar() {
           >
             <div className="flex flex-col gap-3 px-5 pb-6 pt-2">
               {links.map((link) => (
-                <a
+                <button
                   key={link.href}
-                  href={link.href}
-                  onClick={() => setOpen(false)}
-                  className="rounded-lg px-4 py-3 text-sm font-medium text-light-cream transition-colors hover:bg-white/10"
+                  onClick={() => scrollTo(link.href.slice(1))}
+                  className="rounded-lg px-4 py-3 text-sm font-medium text-left text-light-cream transition-colors hover:bg-white/10"
                 >
                   {link.label}
-                </a>
+                </button>
               ))}
-              <a
-                href="#contact"
-                onClick={() => setOpen(false)}
+              <button
+                onClick={() => scrollTo("contact")}
                 className="mt-2 rounded-full bg-gradient-to-r from-primary to-secondary px-6 py-3 text-center text-sm font-bold text-white shadow-lg"
               >
                 Order Now
-              </a>
+              </button>
             </div>
           </motion.div>
         )}
