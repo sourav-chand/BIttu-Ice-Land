@@ -48,7 +48,12 @@ export default function ContactSection() {
               <div
                 className="flex h-64 items-center justify-center bg-gradient-to-br from-dark-base to-[#2D1B69] sm:h-72"
               >
-                <div className="text-center">
+                <a
+                  href="https://www.google.com/maps/place/BITTU+ICELAND/@23.3195938,87.2195986,17z/data=!4m14!1m7!3m6!1s0x39f7a189c60a7741:0xc6d0e2468db7e6bc!2sBITTU+ICELAND!8m2!3d23.3195938!4d87.2217226!16s%2Fg%2F11v5ss9yk3!3m5!1s0x39f7a189c60a7741:0xc6d0e2468db7e6bc!8m2!3d23.3195938!4d87.2217226!16s%2Fg%2F11v5ss9yk3?entry=ttu&g_ep=EgoyMDI2MDUyNy4wIKXMDSoASAFQAw%3D%3D"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-center transition-opacity hover:opacity-80"
+                >
                   <MapPin className="mx-auto h-10 w-10 text-secondary" />
                   <p className="mt-3 font-medium text-light-cream">
                     Beliatore, Bankura, West Bengal
@@ -56,7 +61,7 @@ export default function ContactSection() {
                   <p className="mt-1 text-sm text-light-cream/70">
                     Open in Google Maps →
                   </p>
-                </div>
+                </a>
               </div>
             </div>
 
